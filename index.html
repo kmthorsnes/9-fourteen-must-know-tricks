@@ -16,6 +16,12 @@
       p.style.color = '#BADA55';
       p.style.fontSize = '50px';
     }
+    
+    // clearing
+    console.clear(); // denne er jo veldig morsom!
+
+    // Dummy constant: 
+    const p = document.querySelector('p');
 
     // Regular
     console.log('Halla kompis');
@@ -25,26 +31,44 @@
 
     // Styled
     console.log('%c Jeg er en stor og flott text', 'font-size: 50px; background: yellow; text-shadow: 10px 10px 0 blue');
+  
     // warning!
     console.warn('advarsel!');
+    
     // Error :|
     console.error('Kjipt, dette er en error');
+    
     // Info
     console.info('Dette til din informasjon');
+    
     // Testing
     console.assert( 1 === 1, 'denne vil ikke vises for 1 er faktisk 1');
     console.assert(1 === 2, 'denne feilmeldingen vil derimot vises fordi 1 er ikke 2' )
 
-    // clearing
-
     // Viewing DOM Elements
+    console.log(p);
+    console.dir(p);
 
     // Grouping together
+    dogs.forEach(dog => {
+      console.group(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age * 7 } dog years old `);
+      console.groupEnd(`${dog.name}`);
+    });
 
     // counting
-
-    // timing
-
+    console.count('Kalle');
+    console.count('Kalle');
+    console.count('Kalle');
+    // timing // Denne tar tiden på hvor lang tid det tar å hente data
+    console.time('fetching data');
+    fetch('https://api.github.com/users/wesbos')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      }); 
   </script>
 </body>
 </html>
